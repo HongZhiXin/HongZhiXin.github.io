@@ -98,4 +98,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: <repository url> #https://github.com/HongZhiXin/HongZhiXin.github.io.git
+  branch: [branch]
+  message: [message]
