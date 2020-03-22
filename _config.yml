@@ -99,6 +99,6 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: <repository url> #https://github.com/HongZhiXin/HongZhiXin.github.io.git
-  branch: [branch]
-  message: [message]
+  repo: https://github.com/HongZhiXin/HongZhiXin.github.io.git
+  branch: master
+  message: son
