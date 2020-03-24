@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>选择棋盘模型</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        window.onload = function () {
+            document.getElementById("dom").addEventListener("click", linkTo("dom"), false)
+            document.getElementById("canvas").addEventListener("click", linkTo("canvas"), false)
+
+            function linkTo(url) {
+                return function () {
+                    window.location = ("./" + url + ".html")
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #dom {
+            display: flex;
+            justify-content: center;
+            width: 30px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid chartreuse;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #canvas {
+            display: flex;
+            justify-content: center;
+            width: 30px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid coral;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>请选择棋盘模型</h3>
+    &nbsp;&nbsp;&nbsp;
+    <div id="dom">dom</div>
+    or
+    <div id="canvas">canvas</div>
+
+</body>
+
+</html>
