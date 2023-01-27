@@ -10,10 +10,6 @@
 
     <!--Description-->
     
-        <meta name="description" content="首先本文项目来源于GitHub，此文为这次五子棋的逻辑记上小本本。
-🙃主要还是自己太菜了…   末尾附上相关链接
-主要逻辑">
-    
 
     <!--Author-->
     
@@ -22,7 +18,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="五子棋（dom、canvas两种模式）"/>
+        <meta property="og:title" content="所有标签"/>
     
 
     <!--Open Graph Description-->
@@ -47,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>五子棋（dom、canvas两种模式） - 小洪的个人博客</title>
+    <title>所有标签 - 小洪的个人博客</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -140,70 +136,25 @@
     <div class="col-sm-12">
 
         <!--Title and Logo-->
-        <header>
+        
+            <header>
     <div class="logo">
-        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        <a href="/"><i class="logo-icon fa fa-tags" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">所有标签</h1>
         
     </div>
 </header>
-
-        <section class="main">
-            
-<div class="post">
-
-    <div class="post-header">
-        <h1 class="title">
-            <a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/">
-                五子棋（dom、canvas两种模式）
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-03-24</span>
-            
-            
-            
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <p>首先本文项目来源于GitHub，此文为这次五子棋的逻辑记上小本本。</p>
-<p>🙃主要还是自己太菜了…   末尾附上相关链接</p>
-<h3 id="主要逻辑"><a href="#主要逻辑" class="headerlink" title="主要逻辑"></a>主要逻辑</h3><a id="more"></a>
-<ol>
-<li><p>无论是dom方式还是canvas模式，两者的区别只在与页面渲染方式。dom整个棋盘为一个大div包裹着多个网格cell（也是div）,落子则是创建新的节点定位在画好的棋盘上，根据x,y坐标。canvas则是在容器上使用2d模式先画好棋盘，也是一个一个网格cell画出来的，落子则是根据x,y坐标在位置上创建圆形方法，填充相关的颜色。</p>
-</li>
-<li><p>核心逻辑是每次落子时判断该位置的八个方向（上、下、左、右、左上、左下、右上、右下）的连续同色是否大于等于5个，没有则可以继续，有则判断当前颜色方胜利</p>
-<p><img src="https://img-blog.csdn.net/20170226141741255?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbjY3ODk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="方向图"></p>
-</li>
-</ol>
-<ol start="3">
-<li><p>悔棋和撤销悔棋功能</p>
-<p><img src="https://img-blog.csdn.net/20170226145358026?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbjY3ODk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="流程图"></p>
-<p>让 record forget两数组通过栈的方式实现功能；</p>
-</li>
-</ol>
-<h3 id="启发"><a href="#启发" class="headerlink" title="启发"></a>启发</h3><p>全文使用面对对象的原生js，看代码能有很多学习的东西。留下插眼位置，留下传送门，有空研读学习。</p>
-<p>文章来自：<a href="https://blog.csdn.net/chenjingzh72662/article/details/100998003" target="_blank" rel="noopener">csdn</a>           项目地址： <a href="https://github.com/jian6789/Gobang" target="_blank" rel="noopener">源项目地址github</a></p>
-<p><a href="https://hongzhixin.github.io/wuziqi/index.html">项目演示</a></p>
-
-    </div>
-
-    
-
-    
-
-    <!-- Comments -->
-    
-
+            <section class="main archive-container">
+                
+                        <div class="archive-post">
+    <a href="/tags/vue/">
+        #vue
+    </a>
 </div>
-        </section>
-
+                
+            </section>
+        
     </div>
 </div>
 

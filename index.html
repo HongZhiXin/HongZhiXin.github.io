@@ -1,119 +1,483 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jackey Hong's blog</title><meta name="description" content=""><meta name="author" content="Jackey Hong"><meta name="copyright" content="Jackey Hong"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Jackey Hong's blog"><meta name="twitter:description" content=""><meta name="twitter:image" content="http://5b0988e595225.cdn.sohucs.com/images/20171117/5c841ac1c3fb491c8c1848ff2d2487ba.jpeg"><meta property="og:type" content="website"><meta property="og:title" content="Jackey Hong's blog"><meta property="og:url" content="https://hongzhixin.github.io/"><meta property="og:site_name" content="Jackey Hong's blog"><meta property="og:description" content=""><meta property="og:image" content="http://5b0988e595225.cdn.sohucs.com/images/20171117/5c841ac1c3fb491c8c1848ff2d2487ba.jpeg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
-var t = Cookies.get("theme")
-if (autoChangeMode == '1'){
-  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+<!DOCTYPE html>
+<html lang="en">
 
-  if (t === undefined){
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport){
-      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-      now = new Date();
-      hour = now.getHours();
-      isNight = hour < 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
-  }
-  } else if (t == 'light') activateLightMode()
-  else activateDarkMode()
+<!-- Head tag -->
+<head>
 
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://hongzhixin.github.io/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    title: 'Snackbar.bookmark.title',
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime_unit: '天',
-  runtime: true,
-  copyright: undefined,
-  ClickShowText: undefined,
-  medium_zoom: false,
-  fancybox: true,
-  Snackbar: undefined,
-  baiduPush: false,
-  highlightCopy: true,
-  highlightLang: true,
-  highlightShrink: false,
-  isFontAwesomeV5: false
-  
-}</script><script>var GLOBAL_CONFIG_SITE = { 
-  isPost: false,
-  isHome: true
-}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="http://5b0988e595225.cdn.sohucs.com/images/20171117/5c841ac1c3fb491c8c1848ff2d2487ba.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><div id="body-wrap"><div class="full_page" id="nav" style="background-image: url(http://img.netbian.com/file/2020/0214/1e7c0d6d4d943662e5b634e1400464a3.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Jackey Hong's blog</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></span></div><div id="site-info"><h1 id="site_title">Jackey Hong's blog</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/HongZhiXin" target="_blank"><i class="fa fa-github" aria-hidden="true">    </i></a><a class="social-icon" href="mailto:xxxxxxxx@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true">    </i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true">    </i></a></div></div><div id="scroll_down"><i class="fa fa-angle-down scroll-down-effects"></i></div></div><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/" title="H5音频实现歌词同步滚动">     <img class="post_bg lazyload" data-src="https://cn.vuejs.org/images/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="H5音频实现歌词同步滚动"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/" title="H5音频实现歌词同步滚动">H5音频实现歌词同步滚动</a><div class="article-meta-wrap"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i>2020-09-25</time></div><div class="content">动机​    看着网页版的qq音乐里歌词滚动，想让无聊的自己让点事情做，顺便复习一下H5的audio API
-效果
+    <!--Description-->
+    
 
-​    这里的控制面版controls使用了原生的，因浏览器不同实际的controls也显示不同，图中为chrome的
-实现
-建立一个audio 音频标签，src里是音频文件也可以 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/03/25/fetch%E4%B8%8Eaxios/" title="fetch与axios">     <img class="post_bg lazyload" data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4005754747,4127172206&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="fetch与axios"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/25/fetch%E4%B8%8Eaxios/" title="fetch与axios">fetch与axios</a><div class="article-meta-wrap"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i>2020-03-25</time></div><div class="content">背景fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服
-优缺点fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。
-axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/" title="练习使用markdown(2)">     <img class="post_bg lazyload" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1584987240969&amp;di=3bcd2c51233478505ff65b304d8ecf00&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="练习使用markdown(2)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/" title="练习使用markdown(2)">练习使用markdown(2)</a><div class="article-meta-wrap"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i>2020-03-25</time></div><div class="content">继续上一节的内容
-引用
-这里是引用部分语句
+    <!--Author-->
+    
+        <meta name="author" content="Jackey Hong">
+    
 
-1&gt;这里是引用部分语句
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="小洪的个人博客"/>
+    
 
-图片上节内容有说过链接，图片和链接的格式很相像，区别只在于感叹号
-12图片：![name](url)链接：[name](url)
+    <!--Open Graph Description-->
+    
 
-放张美图吧嘿嘿
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="小洪的个人博客"/>
 
-分割线
-很简单三个***号就可以了
-表格最后是表格，好像在markdow ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/" title="五子棋（dom、canvas两种模式）">     <img class="post_bg lazyload" data-src="http://img4.imgtn.bdimg.com/it/u=3533170061,2676879393&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="五子棋（dom、canvas两种模式）"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/" title="五子棋（dom、canvas两种模式）">五子棋（dom、canvas两种模式）</a><div class="article-meta-wrap"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i>2020-03-24</time></div><div class="content">首先本文项目来源于GitHub，此文为这次五子棋的逻辑记上小本本。
-🙃主要还是自己太菜了…   末尾附上相关链接
-主要逻辑
-无论是dom方式还是canvas模式，两者的区别只在与页面渲染方式。dom整个棋盘为一个大div包裹着多个网格cell（也是div）,落子则是创建新的节点定位在画好的棋盘上， ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/" title="练习使用markdown(1)">     <img class="post_bg lazyload" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1584987240969&amp;di=3bcd2c51233478505ff65b304d8ecf00&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="练习使用markdown(1)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/" title="练习使用markdown(1)">练习使用markdown(1)</a><div class="article-meta-wrap"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i>2020-03-23</time></div><div class="content">练习使用markdown(1)标题的使用123大标题：## &lt;文字&gt; 小标题：### &lt;文字&gt;注意的是###后必须加一个空格
+    <!--Type page-->
+    
+        <meta property="og:type" content="website" />
+    
 
-字体（斜体、粗体）斜体
-1*&lt;文字&gt;*
+    <!--Page Cover-->
+    
 
-粗体
-1**&lt;文字&gt;**
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
 
-链接hao123
-直接网址链接https://baid ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="http://5b0988e595225.cdn.sohucs.com/images/20171117/5c841ac1c3fb491c8c1848ff2d2487ba.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Jackey Hong</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">5</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">1</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/HongZhiXin" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:xxxxxxxx@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">感謝訪問本站，若喜歡請收藏 ^_^</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cn.vuejs.org/images/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="H5音频实现歌词同步滚动" alt="H5音频实现歌词同步滚动"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/" title="H5音频实现歌词同步滚动">H5音频实现歌词同步滚动</div><time class="aside-post_meta post-meta__date">2020-09-25</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/25/fetch%E4%B8%8Eaxios/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4005754747,4127172206&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="fetch与axios" alt="fetch与axios"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/25/fetch%E4%B8%8Eaxios/" title="fetch与axios">fetch与axios</div><time class="aside-post_meta post-meta__date">2020-03-25</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1584987240969&amp;di=3bcd2c51233478505ff65b304d8ecf00&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="练习使用markdown(2)" alt="练习使用markdown(2)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/" title="练习使用markdown(2)">练习使用markdown(2)</div><time class="aside-post_meta post-meta__date">2020-03-25</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="http://img4.imgtn.bdimg.com/it/u=3533170061,2676879393&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="五子棋（dom、canvas两种模式）" alt="五子棋（dom、canvas两种模式）"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/" title="五子棋（dom、canvas两种模式）">五子棋（dom、canvas两种模式）</div><time class="aside-post_meta post-meta__date">2020-03-24</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1584987240969&amp;di=3bcd2c51233478505ff65b304d8ecf00&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-2a56e92cf72cd1268d299f47b8d2cf14_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="练习使用markdown(1)" alt="练习使用markdown(1)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/" title="练习使用markdown(1)">练习使用markdown(1)</div><time class="aside-post_meta post-meta__date">2020-03-23</time></div></a></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/vue/" style="font-size: 16px; color: #999">vue</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/"><span class="archive-list-date">2020年09月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/"><span class="archive-list-date">2020年03月</span><span class="archive-list-count">4</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">5</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="6/7/2018 00:00:00">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Jackey Hong</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>let subtitleEffect = true
-if (subtitleEffect){ 
-  let typed = new Typed("#subtitle", {
-    strings: '长风破浪会有时,直挂云帆济沧海,😘😥😋😂😁😜😝😎😏'.split(","),
-    startDelay: 300,
-    typeSpeed: 150,
-    loop: false,
-    backSpeed: 50
-  })
-}else{
-  document.getElementById("subtitle").innerHTML = '长风破浪会有时'
-  }</script></body></html>
+    <!-- Title -->
+    
+    <title>小洪的个人博客</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">小洪的个人博客</h1>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/">
+                H5音频实现歌词同步滚动
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-09-25</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/实战/">实战</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h3><p>​    看着网页版的qq音乐里歌词滚动，想让无聊的自己让点事情做，顺便复习一下H5的audio API</p>
+        </div>
+        <a href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/03/25/fetch%E4%B8%8Eaxios/">
+                fetch与axios
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-25</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。</p>
+<p>axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持，除了浏览器端，node端也支持。</p>
+        </div>
+        <a href="/2020/03/25/fetch%E4%B8%8Eaxios/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/">
+                练习使用markdown(2)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-25</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>继续上一节的内容</p>
+        </div>
+        <a href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/">
+                五子棋（dom、canvas两种模式）
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-24</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>首先本文项目来源于GitHub，此文为这次五子棋的逻辑记上小本本。</p>
+<p>🙃主要还是自己太菜了…   末尾附上相关链接</p>
+<h3 id="主要逻辑"><a href="#主要逻辑" class="headerlink" title="主要逻辑"></a>主要逻辑</h3>
+        </div>
+        <a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/">
+                练习使用markdown(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="练习使用markdown-1"><a href="#练习使用markdown-1" class="headerlink" title="练习使用markdown(1)"></a>练习使用markdown(1)</h2>
+        </div>
+        <a href="/2020/03/23/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-1/" class="read-more">Read More</a>
+    
+
+</div>
+            
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/hongzhixin" target="_blank" rel="noopener">Jackey Hong</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/">H5音频实现歌词同步滚动</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/25/fetch%E4%B8%8Eaxios/">fetch与axios</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/">练习使用markdown(2)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/">五子棋（dom、canvas两种模式）</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E5%AE%9E%E6%88%98/">实战</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://telegram.org/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-telegram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jackey Hong</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
