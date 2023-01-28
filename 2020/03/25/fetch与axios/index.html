@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="背景fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服
+优缺点fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。
+axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持，除了浏览器端，node端也支持。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Jackey Hong">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="fetch与axios"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="小洪的个人博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>fetch与axios - 小洪的个人博客</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/03/25/fetch%E4%B8%8Eaxios/">
+                fetch与axios
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-25</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。</p>
+<p>axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持，除了浏览器端，node端也支持。</p>
+<a id="more"></a>
+<h3 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h3><p>定义需要的参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> URL = <span class="string">"https://free-api.heweather.net/s6/weather/now"</span>;<span class="comment">//使用了天气free版api接口</span></span><br><span class="line"><span class="keyword">const</span> loc = <span class="string">"shenzhen"</span>;<span class="comment">//接口定义的城市参数</span></span><br><span class="line"><span class="keyword">const</span> key = <span class="string">"******************"</span>; <span class="comment">//真实key值这里不显示</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>fetch （get方法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(URL+<span class="string">'?'</span>+<span class="string">`location=<span class="subst">$&#123;loc&#125;</span>`</span>+<span class="string">'&amp;'</span>+<span class="string">`key=<span class="subst">$&#123;key&#125;</span>`</span>).then(<span class="function"><span class="params">data</span>=&gt;</span></span><br><span class="line">      data.json() </span><br><span class="line">     ).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(data,<span class="string">"fetch"</span>)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>fetch()返回一个promise对象，然后该对象.then()中转为json数据格式并返回一个新的promise,新的promise对象.then()中拿到转为json格式的数据。</p>
+</li>
+<li><p>fetch （post方法）</p>
+<p>由于使用的真实接口是get方法的，可以直接把参数拼接在地址上，这里的post方法使用的是网上的代码</p>
+<p>这里的关键是传入头部content-type，还有一个注意的地方则是，如果将config对象中的method填入’GET’会报错，提示GET/HEAD方法不能接收body参数。所以get方法只能通过拼接参数到url上进行调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> postData = &#123;<span class="attr">a</span>:<span class="string">'b'</span>&#125;;</span><br><span class="line">fetch(<span class="string">'http://data.xxx.com/Admin/Login/login'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  mode: <span class="string">'cors'</span>,</span><br><span class="line">  credentials: <span class="string">'include'</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  body: <span class="built_in">JSON</span>.stringify(postData)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>axios</p>
+<p>首先在node环境下使用命令npm install axios 安装到axios项目根目录下的node_modules中</p>
+<p>在项目中引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span></span><br></pre></td></tr></table></figure>
+
+<p>三个参数继续沿用，调用如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">axios.request(&#123;</span><br><span class="line">        url: URL,</span><br><span class="line">        method: <span class="string">"get"</span>,</span><br><span class="line">        params: &#123;</span><br><span class="line">          location: loc,</span><br><span class="line">          key: key</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> newdata = data.data;</span><br><span class="line">        <span class="comment">//判断是否成功取得数据</span></span><br><span class="line">        <span class="keyword">if</span> (newdata.HeWeather6 &amp;&amp; newdata.HeWeather6.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//对data中的初始变量进行赋值，便于页面显示</span></span><br><span class="line">          <span class="keyword">const</span> weather = newdata.HeWeather6[<span class="number">0</span>];</span><br><span class="line">          <span class="keyword">this</span>.weather = weather.now;</span><br><span class="line">          <span class="keyword">this</span>.lOcation = weather.basic;</span><br><span class="line">          <span class="keyword">this</span>.timer = weather.update;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本人更倾向于axios，因为现在前后端分离的项目都会有node环境啦，又不需要考虑兼容性问题，真香！</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/hongzhixin" target="_blank" rel="noopener">Jackey Hong</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2023/01/27/%E9%87%8D%E6%96%B0%E8%B8%8F%E4%B8%8A%E5%86%99%E4%BD%9C%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">重新踏上写作学习之旅</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/09/25/H5%E9%9F%B3%E9%A2%91%E5%AE%9E%E7%8E%B0%E6%AD%8C%E8%AF%8D%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8/">H5音频实现歌词同步滚动</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/25/fetch%E4%B8%8Eaxios/">fetch与axios</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/">练习使用markdown(2)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E5%AE%9E%E6%88%98/">实战</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://telegram.org/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-telegram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jackey Hong</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
