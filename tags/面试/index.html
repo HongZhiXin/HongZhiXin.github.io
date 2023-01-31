@@ -10,10 +10,6 @@
 
     <!--Description-->
     
-        <meta name="description" content="背景fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服
-优缺点fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。
-axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持，除了浏览器端，node端也支持。">
-    
 
     <!--Author-->
     
@@ -22,7 +18,7 @@ axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpReque
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="fetch与axios"/>
+        <meta property="og:title" content="小洪的个人博客"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +29,7 @@ axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpReque
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -47,7 +43,7 @@ axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpReque
 
     <!-- Title -->
     
-    <title>fetch与axios - 小洪的个人博客</title>
+    <title>面试 - 小洪的个人博客</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -136,7 +132,9 @@ axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpReque
 <div class="container">
 
     <!-- Main Content -->
-    <div class="row">
+    
+
+<div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -144,85 +142,34 @@ axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpReque
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
+            <h1 id="main-title" class="title">#面试</h1>
+        
     </div>
 </header>
 
-        <section class="main">
+        <section class="main archive-container">
             
-<div class="post">
-
-    <div class="post-header">
-        <h1 class="title">
-            <a href="/2020/03/25/fetch%E4%B8%8Eaxios/">
-                fetch与axios
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-03-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/JavaScript/">JavaScript</a>
-                </span>
-            
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>fetch与axios都是promise出现后优秀的异步请求接口数据的方案，简洁的语法代替ajax十分舒服</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>fetch是原生js支持的，不需要引入插件，但是对IE低版本不太友好。</p>
-<p>axios除了需要引入以外，几乎没有缺点，本身是基于XMLHttpRequest原理的，所以是个web都能支持，除了浏览器端，node端也支持。</p>
-<a id="more"></a>
-<h3 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h3><p>定义需要的参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> URL = <span class="string">"https://free-api.heweather.net/s6/weather/now"</span>;<span class="comment">//使用了天气free版api接口</span></span><br><span class="line"><span class="keyword">const</span> loc = <span class="string">"shenzhen"</span>;<span class="comment">//接口定义的城市参数</span></span><br><span class="line"><span class="keyword">const</span> key = <span class="string">"******************"</span>; <span class="comment">//真实key值这里不显示</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>fetch （get方法）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(URL+<span class="string">'?'</span>+<span class="string">`location=<span class="subst">$&#123;loc&#125;</span>`</span>+<span class="string">'&amp;'</span>+<span class="string">`key=<span class="subst">$&#123;key&#125;</span>`</span>).then(<span class="function"><span class="params">data</span>=&gt;</span></span><br><span class="line">      data.json() </span><br><span class="line">     ).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(data,<span class="string">"fetch"</span>)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>fetch()返回一个promise对象，然后该对象.then()中转为json数据格式并返回一个新的promise,新的promise对象.then()中拿到转为json格式的数据。</p>
-</li>
-<li><p>fetch （post方法）</p>
-<p>由于使用的真实接口是get方法的，可以直接把参数拼接在地址上，这里的post方法使用的是网上的代码</p>
-<p>这里的关键是传入头部content-type，还有一个注意的地方则是，如果将config对象中的method填入’GET’会报错，提示GET/HEAD方法不能接收body参数。所以get方法只能通过拼接参数到url上进行调用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> postData = &#123;<span class="attr">a</span>:<span class="string">'b'</span>&#125;;</span><br><span class="line">fetch(<span class="string">'http://data.xxx.com/Admin/Login/login'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  mode: <span class="string">'cors'</span>,</span><br><span class="line">  credentials: <span class="string">'include'</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  body: <span class="built_in">JSON</span>.stringify(postData)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>axios</p>
-<p>首先在node环境下使用命令npm install axios 安装到axios项目根目录下的node_modules中</p>
-<p>在项目中引用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span></span><br></pre></td></tr></table></figure>
-
-<p>三个参数继续沿用，调用如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">axios.request(&#123;</span><br><span class="line">        url: URL,</span><br><span class="line">        method: <span class="string">"get"</span>,</span><br><span class="line">        params: &#123;</span><br><span class="line">          location: loc,</span><br><span class="line">          key: key</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> newdata = data.data;</span><br><span class="line">        <span class="comment">//判断是否成功取得数据</span></span><br><span class="line">        <span class="keyword">if</span> (newdata.HeWeather6 &amp;&amp; newdata.HeWeather6.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//对data中的初始变量进行赋值，便于页面显示</span></span><br><span class="line">          <span class="keyword">const</span> weather = newdata.HeWeather6[<span class="number">0</span>];</span><br><span class="line">          <span class="keyword">this</span>.weather = weather.now;</span><br><span class="line">          <span class="keyword">this</span>.lOcation = weather.basic;</span><br><span class="line">          <span class="keyword">this</span>.timer = weather.update;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本人更倾向于axios，因为现在前后端分离的项目都会有node环境啦，又不需要考虑兼容性问题，真香！</p>
-
-    </div>
-
-    
-
-    
-
-    <!-- Comments -->
-    
-
+                <div class="archive-post">
+    <a href="/2020/03/24/%E4%BA%94%E5%AD%90%E6%A3%8B%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/">
+        <span class="archive-date">
+            Mar 2020
+        </span>
+        五子棋（dom、canvas两种模式）
+    </a>
 </div>
+            
+                <div class="archive-post">
+    <a href="/2023/01/31/%E9%98%B2%E6%8A%96%EF%BC%88debounce%EF%BC%89%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%88throttle%EF%BC%89/">
+        <span class="archive-date">
+            Jan 2023
+        </span>
+        防抖（debounce）和节流（throttle）
+    </a>
+</div>
+            
         </section>
-
     </div>
 </div>
-
 
 </div>
 
