@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="继续上一节的内容">
+        <meta name="description" content="浏览器如何进行渲染的dom树、cssom树合并渲染树的图解">
     
 
     <!--Author-->
@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="练习使用markdown(2)"/>
+        <meta property="og:title" content="浏览器是如何渲染网页的"/>
     
 
     <!--Open Graph Description-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>练习使用markdown(2) - 小洪的个人博客</title>
+    <title>浏览器是如何渲染网页的 - 小洪的个人博客</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -151,15 +151,19 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2020/03/25/%E7%BB%83%E4%B9%A0%E4%BD%BF%E7%94%A8markdown-2/">
-                练习使用markdown(2)
+            <a href="/2023/02/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E7%BD%91%E9%A1%B5%E7%9A%84/">
+                浏览器是如何渲染网页的
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-03-25</span>
+                <span class="date">2023-02-08</span>
             
             
+            
+                <span class="category">
+                    <a href="/categories/浏览器原理/">浏览器原理</a>
+                </span>
             
         </div>
     </div>
@@ -170,44 +174,54 @@
         
 
         <!-- Post Content -->
-        <p>继续上一节的内容</p>
-<a id="more"></a>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
-<p>这里是引用部分语句</p>
+        <h2 id="浏览器如何进行渲染的"><a href="#浏览器如何进行渲染的" class="headerlink" title="浏览器如何进行渲染的"></a>浏览器如何进行渲染的</h2><p>dom树、cssom树合并渲染树的图解</p>
+<blockquote>
+<p><img src="https://chinese.freecodecamp.org/news/content/images/2020/11/image-15.png" alt="渲染树"></p>
 </blockquote>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;这里是引用部分语句</span><br></pre></td></tr></table></figure>
-
-<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>上节内容有说过链接，图片和链接的格式很相像，区别只在于感叹号</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">图片：![<span class="string">name</span>](<span class="link">url</span>)</span><br><span class="line">链接：[<span class="string">name</span>](<span class="link">url</span>)</span><br></pre></td></tr></table></figure>
-
-<p>放张美图吧嘿嘿</p>
-<p><img src="http://img.netbian.com/file/2019/0123/896bd8e1505f22d2383eea5298c70b22.jpg" alt="美图"></p>
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><hr>
-<p>很简单三个***号就可以了</p>
-<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>最后是表格，好像在markdown语法是最不友好的了，这里直接用使用的Typora工具插入模板</p>
-<table>
-<thead>
-<tr>
-<th>考生</th>
-<th>语文</th>
-<th align="center">数学</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>张三</td>
-<td>78</td>
-<td align="center">97</td>
-</tr>
-<tr>
-<td>李四</td>
-<td>83</td>
-<td align="center">82</td>
-</tr>
-</tbody></table>
-<p>在代码中是这样的</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 考生 | 语文 | 数学 |</span><br><span class="line">| ---- | ---- | :--: |</span><br><span class="line">| 张三 | 78   |  97  |</span><br><span class="line">| 李四 | 83   |  82  |</span><br></pre></td></tr></table></figure>
-
-<p>好了，markdown的语法也不多，两章节基本讲完了，以后日常的博客更新中也会进阶吧哈哈（博客文章语法就是md🤭）</p>
+<a id="more"></a>
+<blockquote>
+<ol>
+<li>解析 HTML：浏览器会把 HTML 文档解析成一棵 DOM（文档对象模型）树</li>
+<li>解析 CSS：浏览器会读取 CSS 文件并应用到 DOM 树上，产生一棵 CSSOM（CSS 对象模型）树</li>
+<li>合并 DOM 和 CSSOM：浏览器会把 DOM 和 CSSOM 合并成一棵渲染树（Rendering Tree），这棵树描述了每个元素的布局、绘制信息</li>
+<li>布局：浏览器遍历渲染树，计算每个元素的位置和大小。</li>
+<li>绘制：浏览器会按照渲染树绘制每个元素，并最终显示在屏幕上。</li>
+</ol>
+</blockquote>
+<h2 id="重绘-Repaint"><a href="#重绘-Repaint" class="headerlink" title="重绘 Repaint"></a>重绘 Repaint</h2><p>当页面元素样式的改变不影响元素在文档流中的位置时（例如background-color,border-color,visibility）,浏览器只会将新样式赋予元素并进行重绘操作。</p>
+<h2 id="回流-重排-Reflow"><a href="#回流-重排-Reflow" class="headerlink" title="回流(重排) Reflow"></a>回流(重排) Reflow</h2><p>当改变影响文档内容或者结构，或者元素位置时，回流操作就会被触发，一般有以下几种情况： </p>
+<blockquote>
+<ul>
+<li>DOM操作（对元素的增删改，顺序变化等）</li>
+<li>内容变化，包括表单区域内的文本改变</li>
+<li>CSS属性的更改或重新计算</li>
+<li>增删样式表内容</li>
+<li>修改class属性</li>
+<li>浏览器窗口变化（滚动或缩放）</li>
+<li>伪类样式激活（:hover等）</li>
+</ul>
+</blockquote>
+<h2 id="浏览器如何优化渲染"><a href="#浏览器如何优化渲染" class="headerlink" title="浏览器如何优化渲染"></a>浏览器如何优化渲染</h2><p>了解了重绘和回流之后，优化浏览器渲染的原理就是建立在如何减少重绘和回流</p>
+<blockquote>
+<ul>
+<li>减少DOM的操作，不必要的时候不进行DOM操作</li>
+<li>布局的时候考虑重排，尽可能的只更改该块区域而其他区域不受影响<br>例如一个position设置为absolute/fixed的元素的更改只会影响其本身和其子元素，而static的元素变化则会影响其之后的所有页面元素。</li>
+<li>修改元素样式时，更改其class属性是性能最高的方法。选择器越有针对性越好（这同样也有助于分离页面样式和逻辑）</li>
+<li>使用现代化前端ui框架如vue和react等，它们的虚拟dom理念使得多次回流和重绘操作合并成一次进行。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="用户输入地址后发生了什么？（简单版本）"><a href="#用户输入地址后发生了什么？（简单版本）" class="headerlink" title="用户输入地址后发生了什么？（简单版本）"></a>用户输入地址后发生了什么？（简单版本）</h2><p>此问题也可以延伸为  <strong>“用户输入地址后发生了什么”？</strong>， 详细的版本将在下期展现</p>
+<blockquote>
+<ol>
+<li>DNS域名解析</li>
+<li>浏览器与服务器建立TCP连接</li>
+<li>浏览器发起HTTP请求</li>
+<li>服务器响应HTTP请求，并返回该页面的HTML内容</li>
+<li>浏览器解析HTML代码，并请求HTML代码的中的资源（如js、css、图片等等）</li>
+<li>浏览器把页面呈现给用户</li>
+</ol>
+</blockquote>
 
     </div>
 
@@ -216,7 +230,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/markdown/">#markdown</a>
+            <a href="/tags/面试/">#面试</a> <a href="/tags/浏览器原理/">#浏览器原理</a>
         </div>
     
 
