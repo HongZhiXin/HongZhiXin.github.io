@@ -4,6 +4,7 @@
 <head>
 	<title>致最爱的凤</title>
 	<meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
 		html,
@@ -200,8 +201,8 @@
 	</div>
 	<iframe src="./background/index.html">
 	</iframe>
-	<audio autoplay loop>
-		<source src="http://music.163.com/song/media/outer/url?id=1437846886.mp3" type="audio/mpeg" ></source>
+	<audio loop autoplay>
+		<source src="mp3/easy_love.mp3" type="audio/mpeg" ></source>
 	</audio>
 	<script>
 		var personArray = new Array;
@@ -516,6 +517,8 @@
 			renderer.render(scene, camera);
 
 		}
+
+		
 
 	</script>
 
