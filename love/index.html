@@ -186,6 +186,7 @@
 	<!-- <audio autoplay="" loop="">
 		<source src="http://www.ytmp3.cn/down/72794.mp3">
 	</audio> -->
+
 	<div id="menu">
 		<button id="table">表格</button>
 		<button id="sphere">球球</button>
@@ -199,11 +200,8 @@
 		</div>
 		<div class="intro">天气好冷，我的心是冰冰的！</div>
 	</div>
-	<iframe src="./background/index.html">
+	<iframe src="./background/index.html" allow="autoplay">
 	</iframe>
-	<audio loop autoplay>
-		<source src="mp3/easy_love.mp3" type="audio/mpeg" ></source>
-	</audio>
 	<script>
 		var personArray = new Array;
 		var CurPersonNum = 0;
@@ -277,6 +275,7 @@
 
 		init();
 		animate();
+		// handlerAudio()
 
 		function init() {
 
@@ -516,6 +515,11 @@
 
 			renderer.render(scene, camera);
 
+		}
+
+		function handlerAudio () {
+			const audio = document.querySelector('audio')
+			audio.oncanplay = function() {}
 		}
 
 		
