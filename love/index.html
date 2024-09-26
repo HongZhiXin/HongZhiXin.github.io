@@ -171,6 +171,13 @@
 			height: 100vh;
 			border-width: 0;
 		}
+
+		#play-button {
+			position: absolute;
+			bottom: 20px;
+			width: 20px;
+			height: 20px;
+		}
 	</style>
 	<link rel="stylesheet" href="css/animate.min.css">
 </head>
@@ -186,7 +193,11 @@
 	<!-- <audio autoplay="" loop="">
 		<source src="http://www.ytmp3.cn/down/72794.mp3">
 	</audio> -->
-
+	<div id="play-button">
+		<button onclick="handlerAudio()">play</button>
+	</div>
+	<audio loop src="http://music.163.com/song/media/outer/url?id=1437846886.mp3" preload="auto">
+	</audio>
 	<div id="menu">
 		<button id="table">表格</button>
 		<button id="sphere">球球</button>
@@ -200,7 +211,7 @@
 		</div>
 		<div class="intro">天气好冷，我的心是冰冰的！</div>
 	</div>
-	<iframe src="./background/index.html" allow="autoplay">
+	<iframe src="./background/index.html">
 	</iframe>
 	<script>
 		var personArray = new Array;
@@ -208,7 +219,7 @@
 		// animate
 		var _in = ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'slideInDown', 'slideInLeft', 'slideInRight'];
 		var _out = ['bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'slideOutDown', 'slideOutLeft', 'slideOutRight'];
-
+		var isPlay = false
 		// 模拟推送数据
 		// var s = setInterval(function () {
 		// 	// get animate
@@ -275,7 +286,6 @@
 
 		init();
 		animate();
-		// handlerAudio()
 
 		function init() {
 
@@ -516,10 +526,20 @@
 			renderer.render(scene, camera);
 
 		}
-
+		
 		function handlerAudio () {
 			const audio = document.querySelector('audio')
-			audio.oncanplay = function() {}
+			const btn = document.querySelector("#play-button button")
+			if(isPlay) {
+				isPlay = false
+				audio.pause()
+				btn.innerText = '播放'
+			}
+			else {
+				isPlay = true
+				audio.play()
+				btn.innerText = '暂停'
+			}
 		}
 
 		
