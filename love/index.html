@@ -174,10 +174,29 @@
 
 		#play-button {
 			position: absolute;
-			bottom: 20px;
-			width: 20px;
-			height: 20px;
+			top: 25px;
+			right: 25px;
+			width: 30px;
+			height: 30px;
 		}
+
+		#play-button img {
+			width: 100%;
+			height: 100%;
+			animation: xz 2s infinite linear;
+			animation-play-state: paused;
+			cursor: pointer;
+		}
+
+		@keyframes xz {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
 	</style>
 	<link rel="stylesheet" href="css/animate.min.css">
 </head>
@@ -193,8 +212,8 @@
 	<!-- <audio autoplay="" loop="">
 		<source src="http://www.ytmp3.cn/down/72794.mp3">
 	</audio> -->
-	<div id="play-button">
-		<button onclick="handlerAudio()">play</button>
+	<div id="play-button" onclick="handlerAudio()">
+		<img src="img/music.svg" />
 	</div>
 	<audio loop src="http://music.163.com/song/media/outer/url?id=1437846886.mp3" preload="auto">
 	</audio>
@@ -529,16 +548,16 @@
 		
 		function handlerAudio () {
 			const audio = document.querySelector('audio')
-			const btn = document.querySelector("#play-button button")
+			const playImg = document.querySelector("#play-button img")
 			if(isPlay) {
 				isPlay = false
 				audio.pause()
-				btn.innerText = '播放'
+				playImg.style.animationPlayState = 'paused'
 			}
 			else {
 				isPlay = true
 				audio.play()
-				btn.innerText = '暂停'
+				playImg.style.animationPlayState = 'running'
 			}
 		}
 
