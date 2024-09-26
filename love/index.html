@@ -166,7 +166,7 @@
 			white-space: nowrap;
 		}
 
-		iframe{
+		iframe {
 			width: 100vw;
 			height: 100vh;
 			border-width: 0;
@@ -188,15 +188,41 @@
 			cursor: pointer;
 		}
 
+		#lyricsDisplay {
+			position: absolute;
+			width: 100vw;
+			font-size: 22px;
+			color: #fff;
+			text-align: center;
+			bottom: 6px;
+			letter-spacing: 5px;
+			font-style: italic;
+			text-shadow: 0 0 5px #ff6347, 0 0 10px #ff6347, 0 0 15px #ff6347, 0 0 20px #ff6347;
+			transition: -3s;
+			transition: opacity 1s ease-in-out;
+		}
+
 		@keyframes xz {
 			from {
 				transform: rotate(0deg);
 			}
+
 			to {
 				transform: rotate(360deg);
 			}
 		}
 
+		/* 淡出动画 */
+		.fade-out {
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+
+		/* 淡入动画 */
+		.fade-in {
+			opacity: 1;
+			transition: opacity 1s ease-in-out;
+		}
 	</style>
 	<link rel="stylesheet" href="css/animate.min.css">
 </head>
@@ -214,6 +240,9 @@
 	</audio> -->
 	<div id="play-button" onclick="handlerAudio()">
 		<img src="img/music.svg" />
+	</div>
+	<div id="lyricsDisplay">
+
 	</div>
 	<audio loop src="http://music.163.com/song/media/outer/url?id=1437846886.mp3" preload="auto">
 	</audio>
@@ -233,6 +262,7 @@
 	<iframe src="./background/index.html">
 	</iframe>
 	<script>
+
 		var personArray = new Array;
 		var CurPersonNum = 0;
 		// animate
@@ -269,13 +299,13 @@
 		for (var i = 1; i <= 99; i++) {
 			let photoNum = 15
 			let random = Math.floor(Math.random() * photoNum)
-			random = random >= photoNum ? random - 1 : !random ? 1: random
+			random = random >= photoNum ? random - 1 : !random ? 1 : random
 			if (i <= photoNum) {
 				personArray.push({
 					image: `img/f${i}.jpg`
-				});	
+				});
 			} else {
-			
+
 				personArray.push({
 					image: `img/f${random}.jpg`
 				});
@@ -545,26 +575,73 @@
 			renderer.render(scene, camera);
 
 		}
-		
-		function handlerAudio () {
+
+		function handlerAudio() {
 			const audio = document.querySelector('audio')
 			const playImg = document.querySelector("#play-button img")
-			if(isPlay) {
+			if (isPlay) {
 				isPlay = false
 				audio.pause()
 				playImg.style.animationPlayState = 'paused'
 			}
 			else {
 				isPlay = true
+				if (audio.currentTime < 9.324) {
+					audio.currentTime = 9.324
+					audio.play()
+					playImg.style.animationPlayState = 'running'
+					return
+				}
 				audio.play()
 				playImg.style.animationPlayState = 'running'
 			}
 		}
 
-		
+
 
 	</script>
+	<script type="module">
+		import { lrc } from './mp3/easy_love_lrc.js'
+		const lyrics = lrc.trim().split('\n').map(line => {
+			const timeMatch = line.match(/\[(\d{2}):(\d{2}).(\d{3})\]/);
+			const minutes = parseInt(timeMatch[1], 10);
+			const seconds = parseInt(timeMatch[2], 10);
+			const milliseconds = parseInt(timeMatch[3], 10);
+			const timeInSeconds = minutes * 60 + seconds + milliseconds / 1000;
+			const text = line.replace(/\[.*?\]/, '').trim();
+			return { time: timeInSeconds, text: text };
+		});
 
+		const audioPlayer = document.querySelector('audio');
+		const lyricsDisplay = document.getElementById('lyricsDisplay');
+		// 监听音频的播放进度
+		audioPlayer.addEventListener('timeupdate', () => {
+    const currentTime = audioPlayer.currentTime;
+let currentIndex = -1;
+    // 找到当前时间点对应的歌词
+    for (let i = 0; i < lyrics.length; i++) {
+        if (currentTime >= lyrics[i].time && (i === lyrics.length - 1 || currentTime < lyrics[i + 1].time)) {
+            if (i !== currentIndex) {
+                currentIndex = i;
+
+                // 淡出当前歌词
+                lyricsDisplay.classList.add('fade-out');
+
+                // 等待淡出动画结束后，切换歌词
+                setTimeout(() => {
+                    // 更新歌词内容
+                    lyricsDisplay.innerText = lyrics[i].text;
+
+                    // 淡入新歌词
+                    lyricsDisplay.classList.remove('fade-out');
+                    lyricsDisplay.classList.add('fade-in');
+                }, 1000); // 1秒等待时间，和CSS中的transition时间相同
+            }
+            break;
+        }
+    }
+})
+	</script>
 </body>
 
 </html>
