@@ -1,361 +1,526 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>致最爱的凤❤️</title>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
 
-<head>
-	<title>致最爱的凤❤️</title>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<style>
-		html,
-		body {
-			height: 100%;
-		}
+      body {
+        background-color: #000000;
+        margin: 0;
+        font-family: Helvetica, sans-serif;
+        overflow: hidden;
+      }
 
-		body {
-			background-color: #000000;
-			margin: 0;
-			font-family: Helvetica, sans-serif;
-			;
-			overflow: hidden;
-		}
+      a {
+        color: #ffffff;
+      }
 
-		a {
-			color: #ffffff;
-		}
+      #info {
+        position: absolute;
+        width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family: Monospace;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 1;
+      }
 
-		#info {
-			position: absolute;
-			width: 100%;
-			color: #ffffff;
-			padding: 5px;
-			font-family: Monospace;
-			font-size: 13px;
-			font-weight: bold;
-			text-align: center;
-			z-index: 1;
-		}
+      #menu {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        display: none;
+      }
 
-		#menu {
-			position: absolute;
-			bottom: 20px;
-			width: 100%;
-			text-align: center;
-			display: none;
-		}
+      .element {
+        width: 100px;
+        /* 120 160 */
+        height: 100px;
+        box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
+        border: 1px solid rgba(127, 255, 255, 0.25);
+        text-align: center;
+        cursor: default;
+      }
 
-		.element {
-			width: 100px;
-			/* 120 160 */
-			height: 100px;
-			box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
-			border: 1px solid rgba(127, 255, 255, 0.25);
-			text-align: center;
-			cursor: default;
-		}
+      .element:hover {
+        box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+        border: 1px solid rgba(127, 255, 255, 0.75);
+      }
 
-		.element:hover {
-			box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-			border: 1px solid rgba(127, 255, 255, 0.75);
-		}
+      .element img {
+        width: 100px;
+        height: 100px;
+      }
 
-		.element img {
-			width: 100px;
-			height: 100px;
-		}
+      .element .number {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 12px;
+        color: rgba(127, 255, 255, 0.75);
+      }
 
-		.element .number {
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			font-size: 12px;
-			color: rgba(127, 255, 255, 0.75);
-		}
+      .element .symbol {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        right: 0px;
+        font-size: 60px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.75);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
+      }
 
-		.element .symbol {
-			position: absolute;
-			top: 40px;
-			left: 0px;
-			right: 0px;
-			font-size: 60px;
-			font-weight: bold;
-			color: rgba(255, 255, 255, 0.75);
-			text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
-		}
+      .element .details {
+        position: absolute;
+        bottom: 15px;
+        left: 0px;
+        right: 0px;
+        font-size: 12px;
+        color: rgba(127, 255, 255, 0.75);
+      }
 
-		.element .details {
-			position: absolute;
-			bottom: 15px;
-			left: 0px;
-			right: 0px;
-			font-size: 12px;
-			color: rgba(127, 255, 255, 0.75);
-		}
+      button {
+        color: rgba(127, 255, 255, 0.75);
+        background: transparent;
+        outline: 1px solid rgba(127, 255, 255, 0.75);
+        border: 0px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
 
-		button {
-			color: rgba(127, 255, 255, 0.75);
-			background: transparent;
-			outline: 1px solid rgba(127, 255, 255, 0.75);
-			border: 0px;
-			padding: 5px 10px;
-			cursor: pointer;
-		}
+      button:hover {
+        background-color: rgba(0, 255, 255, 0.5);
+      }
 
-		button:hover {
-			background-color: rgba(0, 255, 255, 0.5);
-		}
+      button:active {
+        color: #000000;
+        background-color: rgba(0, 255, 255, 0.75);
+      }
 
-		button:active {
-			color: #000000;
-			background-color: rgba(0, 255, 255, 0.75);
-		}
+      .show_info {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        width: 300px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 #fff;
+        top: 30%;
+      }
 
-		.show_info {
-			position: fixed;
-			background-color: rgba(0, 0, 0, .6);
-			padding: 10px;
-			width: 300px;
-			margin: 0 auto;
-			left: 0;
-			right: 0;
-			border-radius: 5px;
-			box-shadow: 0 0 10px 0 #fff;
-			top: 30%;
-		}
+      .show_info img {
+        display: block;
+        margin: auto;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 #888;
+      }
 
-		.show_info img {
-			display: block;
-			margin: auto;
-			border-radius: 5px;
-			box-shadow: 0 0 10px 0 #888;
-		}
+      .show_info .intro {
+        color: #fff;
+        text-indent: 20px;
+        margin-top: 10px;
+        height: 65px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
 
-		.show_info .intro {
-			color: #fff;
-			text-indent: 20px;
-			margin-top: 10px;
-			height: 65px;
-			overflow: hidden;
-			display: -webkit-box;
-			-webkit-line-clamp: 3;
-			-webkit-box-orient: vertical;
-		}
+      .show_info .info_my {
+        text-align: center;
+      }
 
-		.show_info .info_my {
-			text-align: center;
-		}
+      .show_info .info_my > * {
+        display: inline-block !important;
+        vertical-align: middle;
+      }
 
-		.show_info .info_my>* {
-			display: inline-block !important;
-			vertical-align: middle;
-		}
+      .show_info .info_my .info_mem {
+        color: #fff;
+        max-width: 120px;
+      }
 
-		.show_info .info_my .info_mem {
-			color: #fff;
-			max-width: 120px;
-		}
+      .show_info .info_my .info_mem > div {
+        text-align: left;
+      }
 
-		.show_info .info_my .info_mem>div {
-			text-align: left;
-		}
+      .show_info .info_my .info_mem > div.nickname {
+        max-width: 120px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
 
-		.show_info .info_my .info_mem>div.nickname {
-			max-width: 120px;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-		}
+      iframe {
+        width: 100vw;
+        height: 100vh;
+        border-width: 0;
+      }
 
-		iframe {
-			width: 100vw;
-			height: 100vh;
-			border-width: 0;
-		}
+      #play-button {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+      }
 
-		#play-button {
-			position: absolute;
-			top: 25px;
-			right: 25px;
-			width: 30px;
-			height: 30px;
-		}
+      #play-button img {
+        width: 100%;
+        height: 100%;
+        animation: xz 2s infinite linear;
+        animation-play-state: paused;
+        cursor: pointer;
+      }
 
-		#play-button img {
-			width: 100%;
-			height: 100%;
-			animation: xz 2s infinite linear;
-			animation-play-state: paused;
-			cursor: pointer;
-		}
+      #photo-wall-buttons {
+        position: absolute;
+        top: 22px;
+        right: 65px;
+        width: 36px;
+        height: 36px;
+      }
 
-		#lyricsDisplay {
-			position: absolute;
-			width: 100vw;
-			font-size: 22px;
-			color: #fff;
-			text-align: center;
-			bottom: 24px;
-			letter-spacing: 5px;
-			font-style: italic;
-			text-shadow: 0 0 5px #ff6347, 0 0 10px #ff6347, 0 0 15px #ff6347, 0 0 20px #ff6347;
-			transition: opacity .1s ease-in-out;
-		}
+      #photo-wall-buttons img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
 
-		@keyframes xz {
-			from {
-				transform: rotate(0deg);
-			}
+      #photo-wall-buttons img:nth-child(1) {
+        animation: xz 2s infinite linear;
+        /* animation-play-state: paused; */
+      }
 
-			to {
-				transform: rotate(360deg);
-			}
-		}
+      #photo-wall-buttons #pause-wall img:nth-child(2),
+      #photo-wall-buttons #play-wall img:nth-child(2) {
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
 
-		/* 淡出动画 */
-		.fade-out {
-			opacity: 0;
-			transition: opacity .1s ease-in-out;
-		}
+      #photo-wall-speeds {
+        position: absolute;
+        top: 22px;
+        right: 110px;
+        width: 36px;
+        height: 36px;
+      }
 
-		/* 淡入动画 */
-		.fade-in {
-			opacity: 1;
-			transition: opacity .1s ease-in-out;
-		}
-	</style>
-	<link rel="stylesheet" href="css/animate.min.css">
-</head>
+      #photo-wall-speeds img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
 
-<body>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/three.js"></script>
-	<script src="js/tween.min.js"></script>
-	<script src="js/TrackballControls.js"></script>
-	<script src="js/CSS3DRenderer.js"></script>
+      #photo-wall-speeds img:nth-child(1) {
+        animation: xz 2s infinite linear;
+        /* animation-play-state: paused; */
+      }
 
-	<div id="container"></div>
-	<!-- <audio autoplay="" loop="">
+      #photo-wall-speeds #half-speed img:nth-child(2),
+      #photo-wall-speeds #one-speed img:nth-child(2) {
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+
+      #lyricsDisplay {
+        position: absolute;
+        width: 100vw;
+        font-size: 22px;
+        color: #fff;
+        text-align: center;
+        bottom: 24px;
+        letter-spacing: 5px;
+        font-style: italic;
+        text-shadow: 0 0 5px #ff6347, 0 0 10px #ff6347, 0 0 15px #ff6347,
+          0 0 20px #ff6347;
+        transition: opacity 0.1s ease-in-out;
+      }
+
+      @keyframes xz {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      /* 淡出动画 */
+      .fade-out {
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+      }
+
+      /* 淡入动画 */
+      .fade-in {
+        opacity: 1;
+        transition: opacity 0.1s ease-in-out;
+      }
+    </style>
+    <link rel="stylesheet" href="css/animate.min.css" />
+  </head>
+
+  <body>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/tween.min.js"></script>
+    <script src="js/TrackballControls.js"></script>
+    <script src="js/CSS3DRenderer.js"></script>
+
+    <div id="container"></div>
+    <!-- <audio autoplay="" loop="">
 		<source src="http://www.ytmp3.cn/down/72794.mp3">
 	</audio> -->
-	<div id="play-button" onclick="handlerAudio()">
-		<img src="img/music.svg" />
-	</div>
-	<div id="lyricsDisplay">
+    <div id="play-button" onclick="handlerAudio()">
+      <img src="img/music.svg" />
+    </div>
+    <div id="photo-wall-buttons">
+      <div id="pause-wall" onclick="pausePhotoWall()">
+        <img src="img/arrow.svg" />
+        <img src="img/pause.svg" />
+      </div>
+      <div id="play-wall" onclick="playPhotoWall()" style="display: none">
+        <img src="img/arrow.svg" />
+        <img src="img/play.svg" />
+      </div>
+    </div>
+    <div id="photo-wall-speeds">
+      <div id="one-speed" onclick="toOnePhotoWallSpeed()">
+        <img src="img/arrow.svg" />
+        <img src="img/0.5x.svg" />
+      </div>
+      <div
+        id="half-speed"
+        onclick="tohalfPhotoWallSpeed()"
+        style="display: none"
+      >
+        <img src="img/arrow.svg" />
+        <img src="img/1.x.svg" />
+      </div>
+    </div>
+    <div id="lyricsDisplay"></div>
+    <audio
+      loop
+      src="http://music.163.com/song/media/outer/url?id=1437846886.mp3"
+      preload="auto"
+    ></audio>
+    <div id="menu">
+      <button id="table">表格</button>
+      <button id="sphere">球球</button>
+      <button id="helix">螺旋</button>
+      <button id="grid">格子</button>
+    </div>
 
-	</div>
-	<audio loop src="http://music.163.com/song/media/outer/url?id=1437846886.mp3" preload="auto">
-	</audio>
-	<div id="menu">
-		<button id="table">表格</button>
-		<button id="sphere">球球</button>
-		<button id="helix">螺旋</button>
-		<button id="grid">格子</button>
-	</div>
+    <div class="show_info animated" style="display: none">
+      <div class="info_my">
+        <img width="200px" src="" />
+      </div>
+      <div class="intro">
+        这是我关于凤的回忆
+        <div style="text-align: right">---hzx</div>
+      </div>
+    </div>
+    <iframe src="./background/index.html"> </iframe>
+    <script>
+      var personArray = new Array()
+      var CurPersonNum = 0
+      // animate
+      var _in = [
+        'bounceIn',
+        'bounceInDown',
+        'bounceInLeft',
+        'bounceInRight',
+        'bounceInUp',
+        'fadeIn',
+        'fadeInDown',
+        'fadeInDownBig',
+        'fadeInLeft',
+        'fadeInLeftBig',
+        'fadeInRight',
+        'fadeInRightBig',
+        'fadeInUp',
+        'fadeInUpBig',
+        'rotateIn',
+        'rotateInDownLeft',
+        'rotateInDownRight',
+        'rotateInUpLeft',
+        'rotateInUpRight',
+        'slideInDown',
+        'slideInLeft',
+        'slideInRight',
+      ]
+      var _out = [
+        'bounceOut',
+        'bounceOutDown',
+        'bounceOutLeft',
+        'bounceOutRight',
+        'bounceOutUp',
+        'fadeOut',
+        'fadeOutDown',
+        'fadeOutDownBig',
+        'fadeOutLeft',
+        'fadeOutLeftBig',
+        'fadeOutRight',
+        'fadeOutRightBig',
+        'fadeOutUp',
+        'fadeOutUpBig',
+        'rotateOut',
+        'rotateOutDownLeft',
+        'rotateOutDownRight',
+        'rotateOutUpLeft',
+        'rotateOutUpRight',
+        'slideOutDown',
+        'slideOutLeft',
+        'slideOutRight',
+      ]
+      var isPlay = false
+      var isPhotoWallPlaying = true
+      var speed = '0.006'
 
-	<div class="show_info animated" style="display:none;">
-		<div class="info_my">
-			<!-- <img width=200px src="img/c.png" /> -->
-		</div>
-		<div class="intro">天气好冷，我的心是冰冰的！</div>
-	</div>
-	<iframe src="./background/index.html">
-	</iframe>
-	<script>
+      // 生成虚拟数据
 
-		var personArray = new Array;
-		var CurPersonNum = 0;
-		// animate
-		var _in = ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'slideInDown', 'slideInLeft', 'slideInRight'];
-		var _out = ['bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'slideOutDown', 'slideOutLeft', 'slideOutRight'];
-		var isPlay = false
-		// 模拟推送数据
-		// var s = setInterval(function () {
-		// 	// get animate
-		// 	var rand_in = parseInt(Math.random() * _in.length, 10);
-		// 	var rand_out = parseInt(Math.random() * _out.length, 10);
-		// 	if (CurPersonNum >= personArray.length) {
-		// 		CurPersonNum = 0;
-		// 	}
-		// 	$('.show_info').show();
-		// 	$('.show_info').addClass(_in[rand_in]);
-		// 	setTimeout(function () {
-		// 		$('.show_info').removeClass(_in[rand_in]);
-		// 		// 更改展示的图片
-		// 		var img = document.getElementsByClassName('element')[CurPersonNum].getElementsByTagName('img')[0];
-		// 		img.setAttribute('src', 'img/a.png');
-		// 		++CurPersonNum;
-		// 		setTimeout(function () {
-		// 			$('.show_info').addClass(_out[rand_out]);
-		// 			setTimeout(function () {
-		// 				$('.show_info').removeClass(_out[rand_out]);
-		// 				$('.show_info').hide();
-		// 			}, 1000);
-		// 		}, 1500);
-		// 	}, 1000);
-		// }, 4500);
+      function showModal(src) {
+        var rand_in = parseInt(Math.random() * _in.length, 10)
 
-		// 生成虚拟数据
-		for (var i = 1; i <= 99; i++) {
-			let photoNum = 16
-			let random = Math.floor(Math.random() * photoNum)
-			random = random >= photoNum ? random - 1 : !random ? 1 : random
-			if (i <= photoNum) {
-				personArray.push({
-					image: `img/f${i}.jpg`
-				});
-			} else {
+        document.querySelector('.info_my img').setAttribute('src', '')
+        $('.show_info').removeClass(_in[rand_in])
+        // 更改展示的图片
+        var img = {
+          src,
+        }
 
-				personArray.push({
-					image: `img/f${random}.jpg`
-				});
-			}
+        document.querySelector('.info_my img').setAttribute('src', img.src)
+        setTimeout(closeModal, 3000)
+        $('.show_info').show()
+        $('.show_info').addClass(_in[rand_in])
+      }
 
-		}
+      function closeModal() {
+        var rand_out = parseInt(Math.random() * _out.length, 10)
+        $('.show_info').addClass(_out[rand_out])
+        setTimeout(function () {
+          document.querySelector('.info_my img').setAttribute('src', '')
+          $('.show_info').removeClass(_out[rand_out])
+          $('.show_info').hide()
+        }, 1000)
+      }
 
-		var table = new Array;
-		for (var i = 0; i < personArray.length; i++) {
-			table[i] = new Object();
-			if (i < personArray.length) {
-				table[i] = personArray[i];
-				table[i].src = personArray[i].thumb_image;
-			}
-			table[i].p_x = i % 20 + 1;
-			table[i].p_y = Math.floor(i / 20) + 1;
-		}
+      function pausePhotoWall() {
+        isPhotoWallPlaying = false
+        document.getElementById('pause-wall').style.display = 'none'
+        document.getElementById('play-wall').style.display = 'inline'
+      }
 
+      // Play the photo wall animation
+      function playPhotoWall() {
+        isPhotoWallPlaying = true
+        document.getElementById('pause-wall').style.display = 'inline'
+        document.getElementById('play-wall').style.display = 'none'
+      }
 
+      function tohalfPhotoWallSpeed() {
+        speed = '0.003'
+        document.getElementById('half-speed').style.display = 'none'
+        document.getElementById('one-speed').style.display = 'inline'
+      }
 
+      // Play the photo wall animation
+      function toOnePhotoWallSpeed() {
+        speed = '0.006'
+        document.getElementById('half-speed').style.display = 'inline'
+        document.getElementById('one-speed').style.display = 'none'
+      }
 
-		var camera, scene, renderer;
-		var controls;
+      for (var i = 1; i <= 99; i++) {
+        let photoNum = 16
+        let random = Math.floor(Math.random() * photoNum)
+        random = random >= photoNum ? random - 1 : !random ? 1 : random
+        if (i <= photoNum) {
+          personArray.push({
+            image: `img/f${i}.jpg`,
+          })
+        } else {
+          personArray.push({
+            image: `img/f${random}.jpg`,
+          })
+        }
+      }
 
-		var objects = [];
-		var targets = { table: [], sphere: [], helix: [], grid: [] };
+      var table = new Array()
+      for (var i = 0; i < personArray.length; i++) {
+        table[i] = new Object()
+        if (i < personArray.length) {
+          table[i] = personArray[i]
+          table[i].src = personArray[i].thumb_image
+        }
+        table[i].p_x = (i % 20) + 1
+        table[i].p_y = Math.floor(i / 20) + 1
+      }
 
-		init();
-		animate();
+      var camera, scene, renderer
+      var controls
 
-		function init() {
+      var objects = []
+      var targets = { table: [], sphere: [], helix: [], grid: [] }
 
-			camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
-			camera.position.z = 3000;
+      init()
+      animate()
 
-			scene = new THREE.Scene();
+      function init() {
+        camera = new THREE.PerspectiveCamera(
+          50,
+          window.innerWidth / window.innerHeight,
+          1,
+          10000
+        )
+        camera.position.z = 3000
 
-			// table
+        scene = new THREE.Scene()
 
-			for (var i = 0; i < table.length; i++) {
+        // table
 
-				var element = document.createElement('div');
-				element.className = 'element';
-				element.style.backgroundColor = 'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')';
+        for (var i = 0; i < table.length; i++) {
+          const element = document.createElement('div')
+          element.className = 'element'
+          element.style.backgroundColor =
+            'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')'
 
-				var img = document.createElement('img');
-				img.src = table[i].image;
-				element.appendChild(img);
-
-
-				/*var number = document.createElement( 'div' );
+          const img = document.createElement('img')
+          img.src = table[i].image
+          element.appendChild(img)
+          element.addEventListener('click', function () {
+            showModal(img.src)
+          })
+          /*var number = document.createElement( 'div' );
 				number.className = 'number';
 				number.textContent = (i/5) + 1;
 				element.appendChild( number );
@@ -370,277 +535,292 @@
 				details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
 				element.appendChild( details );*/
 
-				var object = new THREE.CSS3DObject(element);
-				object.position.x = Math.random() * 4000 - 2000;
-				object.position.y = Math.random() * 4000 - 2000;
-				object.position.z = Math.random() * 4000 - 2000;
-				scene.add(object);
-
-				objects.push(object);
-
-				// 表格需要坐标进行排序的
-				var object = new THREE.Object3D();
-				// object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-				// object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
-				object.position.x = (table[i].p_x * 140) - 1330;
-				object.position.y = - (table[i].p_y * 180) + 990;
-
-				targets.table.push(object);
-
-			}
-
-			// sphere
-
-			var vector = new THREE.Vector3();
-			var spherical = new THREE.Spherical();
-
-			for (var i = 0, l = objects.length; i < l; i++) {
-
-				var phi = Math.acos(-1 + (2 * i) / l);
-				var theta = Math.sqrt(l * Math.PI) * phi;
-
-				var object = new THREE.Object3D();
-
-				spherical.set(800, phi, theta);
-
-				object.position.setFromSpherical(spherical);
-
-				vector.copy(object.position).multiplyScalar(2);
-
-				object.lookAt(vector);
-
-				targets.sphere.push(object);
-
-			}
-
-			// helix
-
-			var vector = new THREE.Vector3();
-			var cylindrical = new THREE.Cylindrical();
-
-			for (var i = 0, l = objects.length; i < l; i++) {
-
-				var theta = i * 0.175 + Math.PI;
-				var y = - (i * 5) + 450;
-
-				var object = new THREE.Object3D();
-
-				// 参数一 圈的大小 参数二 左右间距 参数三 上下间距
-				cylindrical.set(900, theta, y);
-
-				object.position.setFromCylindrical(cylindrical);
-
-				vector.x = object.position.x * 2;
-				vector.y = object.position.y;
-				vector.z = object.position.z * 2;
-
-				object.lookAt(vector);
-
-				targets.helix.push(object);
-
-			}
-
-			// grid
-
-			for (var i = 0; i < objects.length; i++) {
-
-				var object = new THREE.Object3D();
-
-				object.position.x = ((i % 5) * 400) - 800; // 400 图片的左右间距  800 x轴中心店
-				object.position.y = (- (Math.floor(i / 5) % 5) * 300) + 500;  // 500 y轴中心店
-				object.position.z = (Math.floor(i / 25)) * 200 - 800;// 300调整 片间距 800z轴中心店
-
-				targets.grid.push(object);
-
-			}
-
-			//渲染
-			renderer = new THREE.CSS3DRenderer();
-			renderer.setSize(window.innerWidth, window.innerHeight);
-			renderer.domElement.style.position = 'absolute';
-			document.getElementById('container').appendChild(renderer.domElement);
-
-			// 鼠标控制
-			controls = new THREE.TrackballControls(camera, renderer.domElement);
-			controls.rotateSpeed = 0.5;
-			controls.minDistance = 500;
-			controls.maxDistance = 6000;
-			controls.addEventListener('change', render);
-
-			// 自动更换
-			var ini = 0;
-			setInterval(function () {
-				ini = ini >= 3 ? 0 : ini;
-				++ini;
-				switch (ini) {
-					case 1:
-						transform(targets.sphere, 1000);
-						break;
-					case 2:
-						transform(targets.helix, 1000);
-						break;
-					case 3:
-						transform(targets.grid, 1000);
-						break;
-				}
-			}, 8000);
-
-			var button = document.getElementById('table');
-			button.addEventListener('click', function (event) {
-				transform(targets.table, 1000);
-			}, false);
-
-			var button = document.getElementById('sphere');
-			button.addEventListener('click', function (event) {
-				transform(targets.sphere, 2000);
-			}, false);
-
-			var button = document.getElementById('helix');
-			button.addEventListener('click', function (event) {
-				transform(targets.helix, 2000);
-			}, false);
-
-			var button = document.getElementById('grid');
-			button.addEventListener('click', function (event) {
-				transform(targets.grid, 2000);
-			}, false);
-
-			transform(targets.table, 2000);
-
-			//
-
-			window.addEventListener('resize', onWindowResize, false);
-
-		}
-
-		function transform(targets, duration) {
-
-			TWEEN.removeAll();
-
-			for (var i = 0; i < objects.length; i++) {
-
-				var object = objects[i];
-				var target = targets[i];
-
-				new TWEEN.Tween(object.position)
-					.to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
-					.easing(TWEEN.Easing.Exponential.InOut)
-					.start();
-
-				new TWEEN.Tween(object.rotation)
-					.to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
-					.easing(TWEEN.Easing.Exponential.InOut)
-					.start();
-
-			}
-
-			new TWEEN.Tween(this)
-				.to({}, duration * 2)
-				.onUpdate(render)
-				.start();
-
-		}
-
-		function onWindowResize() {
-
-			camera.aspect = window.innerWidth / window.innerHeight;
-			camera.updateProjectionMatrix();
-
-			renderer.setSize(window.innerWidth, window.innerHeight);
-
-			render();
-
-		}
-
-		function animate() {
-
-			// 让场景通过x轴或者y轴旋转  & z
-			// scene.rotation.x += 0.011;
-			scene.rotation.y += 0.008;
-
-			requestAnimationFrame(animate);
-
-			TWEEN.update();
-
-			controls.update();
-
-			// 渲染循环
-			render();
-
-		}
-
-		function render() {
-
-			renderer.render(scene, camera);
-
-		}
-
-		function handlerAudio() {
-			const audio = document.querySelector('audio')
-			const playImg = document.querySelector("#play-button img")
-			if (isPlay) {
-				isPlay = false
-				audio.pause()
-				playImg.style.animationPlayState = 'paused'
-			}
-			else {
-				isPlay = true
-				if (audio.currentTime < 9.324) {
-					audio.currentTime = 9.324
-					audio.play()
-					playImg.style.animationPlayState = 'running'
-					return
-				}
-				audio.play()
-				playImg.style.animationPlayState = 'running'
-			}
-		}
-
-
-
-	</script>
-	<script type="module">
-		import { lrc } from './mp3/easy_love_lrc.js'
-		const lyrics = lrc.trim().split('\n').map(line => {
-			const timeMatch = line.match(/\[(\d{2}):(\d{2}).(\d{3})\]/);
-			const minutes = parseInt(timeMatch[1], 10);
-			const seconds = parseInt(timeMatch[2], 10);
-			const milliseconds = parseInt(timeMatch[3], 10);
-			const timeInSeconds = minutes * 60 + seconds + milliseconds / 1000;
-			const text = line.replace(/\[.*?\]/, '').trim();
-			return { time: timeInSeconds, text: text };
-		});
-
-		const audioPlayer = document.querySelector('audio');
-		const lyricsDisplay = document.getElementById('lyricsDisplay');
-		// 监听音频的播放进度
-		audioPlayer.addEventListener('timeupdate', () => {
-    const currentTime = audioPlayer.currentTime;
-let currentIndex = -1;
-    // 找到当前时间点对应的歌词
-    for (let i = 0; i < lyrics.length; i++) {
-        if (currentTime >= lyrics[i].time && (i === lyrics.length - 1 || currentTime < lyrics[i + 1].time)) {
-            if (i !== currentIndex) {
-                currentIndex = i;
-
-                // 淡出当前歌词
-                lyricsDisplay.classList.add('fade-out');
-
-                // 等待淡出动画结束后，切换歌词
-                setTimeout(() => {
-                    // 更新歌词内容
-                    lyricsDisplay.innerText = lyrics[i].text;
-
-                    // 淡入新歌词
-                    lyricsDisplay.classList.remove('fade-out');
-                    lyricsDisplay.classList.add('fade-in');
-                }, 1000); // 1秒等待时间，和CSS中的transition时间相同
-            }
-            break;
+          var object = new THREE.CSS3DObject(element)
+          object.position.x = Math.random() * 4000 - 2000
+          object.position.y = Math.random() * 4000 - 2000
+          object.position.z = Math.random() * 4000 - 2000
+          scene.add(object)
+
+          objects.push(object)
+
+          // 表格需要坐标进行排序的
+          var object = new THREE.Object3D()
+          // object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+          // object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
+          object.position.x = table[i].p_x * 140 - 1330
+          object.position.y = -(table[i].p_y * 180) + 990
+
+          targets.table.push(object)
         }
-    }
-})
-	</script>
-</body>
 
+        // sphere
+
+        var vector = new THREE.Vector3()
+        var spherical = new THREE.Spherical()
+
+        for (var i = 0, l = objects.length; i < l; i++) {
+          var phi = Math.acos(-1 + (2 * i) / l)
+          var theta = Math.sqrt(l * Math.PI) * phi
+
+          var object = new THREE.Object3D()
+
+          spherical.set(800, phi, theta)
+
+          object.position.setFromSpherical(spherical)
+
+          vector.copy(object.position).multiplyScalar(2)
+
+          object.lookAt(vector)
+
+          targets.sphere.push(object)
+        }
+
+        // helix
+
+        var vector = new THREE.Vector3()
+        var cylindrical = new THREE.Cylindrical()
+
+        for (var i = 0, l = objects.length; i < l; i++) {
+          var theta = i * 0.175 + Math.PI
+          var y = -(i * 5) + 450
+
+          var object = new THREE.Object3D()
+
+          // 参数一 圈的大小 参数二 左右间距 参数三 上下间距
+          cylindrical.set(900, theta, y)
+
+          object.position.setFromCylindrical(cylindrical)
+
+          vector.x = object.position.x * 2
+          vector.y = object.position.y
+          vector.z = object.position.z * 2
+
+          object.lookAt(vector)
+
+          targets.helix.push(object)
+        }
+
+        // grid
+
+        for (var i = 0; i < objects.length; i++) {
+          var object = new THREE.Object3D()
+
+          object.position.x = (i % 5) * 400 - 800 // 400 图片的左右间距  800 x轴中心店
+          object.position.y = -(Math.floor(i / 5) % 5) * 300 + 500 // 500 y轴中心店
+          object.position.z = Math.floor(i / 25) * 200 - 800 // 300调整 片间距 800z轴中心店
+
+          targets.grid.push(object)
+        }
+
+        //渲染
+        renderer = new THREE.CSS3DRenderer()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        renderer.domElement.style.position = 'absolute'
+        document.getElementById('container').appendChild(renderer.domElement)
+
+        // 鼠标控制
+        controls = new THREE.TrackballControls(camera, renderer.domElement)
+        controls.rotateSpeed = 0.5
+        controls.minDistance = 500
+        controls.maxDistance = 6000
+        controls.addEventListener('change', render)
+
+        // 自动更换
+        var ini = 0
+        setInterval(function () {
+          ini = ini >= 3 ? 0 : ini
+          ++ini
+          switch (ini) {
+            case 1:
+              transform(targets.sphere, 1000)
+              break
+            case 2:
+              transform(targets.helix, 1000)
+              break
+            case 3:
+              transform(targets.grid, 1000)
+              break
+          }
+        }, 8000)
+
+        var button = document.getElementById('table')
+        button.addEventListener(
+          'click',
+          function (event) {
+            transform(targets.table, 1000)
+          },
+          false
+        )
+
+        var button = document.getElementById('sphere')
+        button.addEventListener(
+          'click',
+          function (event) {
+            transform(targets.sphere, 2000)
+          },
+          false
+        )
+
+        var button = document.getElementById('helix')
+        button.addEventListener(
+          'click',
+          function (event) {
+            transform(targets.helix, 2000)
+          },
+          false
+        )
+
+        var button = document.getElementById('grid')
+        button.addEventListener(
+          'click',
+          function (event) {
+            transform(targets.grid, 2000)
+          },
+          false
+        )
+
+        transform(targets.table, 2000)
+
+        //
+
+        window.addEventListener('resize', onWindowResize, false)
+      }
+
+      function transform(targets, duration) {
+        TWEEN.removeAll()
+
+        for (var i = 0; i < objects.length; i++) {
+          var object = objects[i]
+          var target = targets[i]
+
+          new TWEEN.Tween(object.position)
+            .to(
+              {
+                x: target.position.x,
+                y: target.position.y,
+                z: target.position.z,
+              },
+              Math.random() * duration + duration
+            )
+            .easing(TWEEN.Easing.Exponential.InOut)
+            .start()
+
+          new TWEEN.Tween(object.rotation)
+            .to(
+              {
+                x: target.rotation.x,
+                y: target.rotation.y,
+                z: target.rotation.z,
+              },
+              Math.random() * duration + duration
+            )
+            .easing(TWEEN.Easing.Exponential.InOut)
+            .start()
+        }
+
+        new TWEEN.Tween(this)
+          .to({}, duration * 2)
+          .onUpdate(render)
+          .start()
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+
+        renderer.setSize(window.innerWidth, window.innerHeight)
+
+        render()
+      }
+
+      function animate() {
+        // 让场景通过x轴或者y轴旋转  & z
+        // scene.rotation.x += 0.011;
+        console.log(speed)
+        if (isPhotoWallPlaying) {
+          scene.rotation.y += +speed
+        }
+
+        requestAnimationFrame(animate)
+
+        if (isPhotoWallPlaying) {
+          TWEEN.update()
+          render()
+        }
+        controls.update()
+      }
+
+      function render() {
+        renderer.render(scene, camera)
+      }
+
+      function handlerAudio() {
+        const audio = document.querySelector('audio')
+        const playImg = document.querySelector('#play-button img')
+        if (isPlay) {
+          isPlay = false
+          audio.pause()
+          playImg.style.animationPlayState = 'paused'
+        } else {
+          isPlay = true
+          if (audio.currentTime < 9.324) {
+            audio.currentTime = 9.324
+            audio.play()
+            playImg.style.animationPlayState = 'running'
+            return
+          }
+          audio.play()
+          playImg.style.animationPlayState = 'running'
+        }
+      }
+    </script>
+    <script type="module">
+      import { lrc } from './mp3/easy_love_lrc.js'
+      const lyrics = lrc
+        .trim()
+        .split('\n')
+        .map((line) => {
+          const timeMatch = line.match(/\[(\d{2}):(\d{2}).(\d{3})\]/)
+          const minutes = parseInt(timeMatch[1], 10)
+          const seconds = parseInt(timeMatch[2], 10)
+          const milliseconds = parseInt(timeMatch[3], 10)
+          const timeInSeconds = minutes * 60 + seconds + milliseconds / 1000
+          const text = line.replace(/\[.*?\]/, '').trim()
+          return { time: timeInSeconds, text: text }
+        })
+
+      const audioPlayer = document.querySelector('audio')
+      const lyricsDisplay = document.getElementById('lyricsDisplay')
+      // 监听音频的播放进度
+      audioPlayer.addEventListener('timeupdate', () => {
+        const currentTime = audioPlayer.currentTime
+        let currentIndex = -1
+        // 找到当前时间点对应的歌词
+        for (let i = 0; i < lyrics.length; i++) {
+          if (
+            currentTime >= lyrics[i].time &&
+            (i === lyrics.length - 1 || currentTime < lyrics[i + 1].time)
+          ) {
+            if (i !== currentIndex) {
+              currentIndex = i
+
+              // 淡出当前歌词
+              lyricsDisplay.classList.add('fade-out')
+
+              // 等待淡出动画结束后，切换歌词
+              setTimeout(() => {
+                // 更新歌词内容
+                lyricsDisplay.innerText = lyrics[i].text
+
+                // 淡入新歌词
+                lyricsDisplay.classList.remove('fade-out')
+                lyricsDisplay.classList.add('fade-in')
+              }, 1000) // 1秒等待时间，和CSS中的transition时间相同
+            }
+            break
+          }
+        }
+      })
+    </script>
+  </body>
 </html>
